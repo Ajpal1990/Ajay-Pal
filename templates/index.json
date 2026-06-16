@@ -13,6 +13,7 @@
       "type": "custom-banner",
       "name": "Custom Banner",
       "settings": {
+        "background_image": "shopify://shop_images/Frame.png",
         "background_color": "#ffffff",
         "heading": "The Gift Guide",
         "subheading": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>",
