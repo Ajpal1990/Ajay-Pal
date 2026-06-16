@@ -106,24 +106,55 @@
         transition: transform 0.25s ease;
     }
     .banner-{{ section.id }}__button::after{
-            content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: -100%;
-    background-color: #FFF544;
-    transition: all 0.25s ease;
+        content: "";
+        position: absolute;
+        width: 0px;
+        height: 100%;
+        left: 0;
+        background-color: #FFF544;
+        transition: all 0.25s ease;
     }
     .banner-{{ section.id }}__button:hover::after{
-        left: 0px;
+        width: 100%;
     }
-    .banner-{{ section.id }}__button:hover svg{
+    .banner-{{ section.id }}__button span,
+    .banner-{{ section.id }}__button svg{
+        position: relative;
+        z-index: 1;
+    }
+    .banner-{{ section.id }}__button:hover svg path{
         fill: #000 !important;
     }
     .banner-{{ section.id }}__button:hover,
     .banner-{{ section.id }}__button:focus-visible{
-        background-color: #FFF544;
         color: #000000;
+        box-shadow: 0px 2px 4px 0px #00000033;
+    }
+
+    @media (max-width:769px){
+        .banner-{{ section.id }}__inner{
+            padding:40px 24px;
+            min-height:0;
+            flex-direction:column;
+        }
+        .banner-{{ section.id }}__bg{
+            position:relative;
+            max-width:100%;
+            width:100%;
+            height:auto;
+            margin-bottom:24px;
+        }
+        .banner-{{ section.id }}__content{
+            max-width: 100%;
+            text-align: center;
+            margin:0 auto;
+        }
+        .banner-{{ section.id }}__heading{
+            font-size:40px;
+        }
+        .banner-{{ section.id }}__button{
+            margin: 0 auto;
+        }
     }
 </style>
 
