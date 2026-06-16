@@ -100,20 +100,31 @@
         background-color: #000;
         overflow: hidden;
         text-decoration: none;
-        transition: background-color 0.25s ease, color 0.25s ease;
+        transition: color 0.25s ease;
     }
     .banner-{{ section.id }}__button-arrow{
         transition: transform 0.25s ease;
     }
     .banner-{{ section.id }}__button::after{
-        content: "";
+            content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    background-color: #FFF544;
+    transition: all 0.25s ease;
     }
-
-    {% comment %} .banner-{{ section.id }}__button:hover,
+    .banner-{{ section.id }}__button:hover::after{
+        left: 0px;
+    }
+    .banner-{{ section.id }}__button:hover svg{
+        fill: #000 !important;
+    }
+    .banner-{{ section.id }}__button:hover,
     .banner-{{ section.id }}__button:focus-visible{
         background-color: #FFF544;
         color: #000000;
-    } {% endcomment %}
+    }
 </style>
 
 {% schema %}
