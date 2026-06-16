@@ -4,7 +4,8 @@
       <img
         class="banner-{{ section.id }}__bg"
         src="{{ section.settings.background_image | image_url: width:1920 }}"
-        srcset="{{ section.settings.background_image | image_url: width: 960 }} 960w",{{ section.settings.background_image | image_url: width: 1920 }} 1920w"
+        srcset="{{ section.settings.background_image | image_url: width: 960 }} 960w,
+                {{ section.settings.background_image | image_url: width: 1920 }} 1920w"
         loading="lazy"
       >
     {% endif %}
@@ -21,7 +22,7 @@
           class="banner-{{ section.id }}__button"
         >
           <span>{{ section.settings.button_label }}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="27" height="12" viewBox="0 0 27 12" fill="none">
+          <svg class="banner-{{ section.id }}__button-arrow" xmlns="http://www.w3.org/2000/svg" width="27" height="12" viewBox="0 0 27 12" fill="none">
             <path d="M0.75 4.77295L7.83954e-08 4.77295L-7.83954e-08 6.27295L0.75 6.27295L0.75 4.77295ZM26.7876 6.05328C27.0805 5.76039 27.0805 5.28551 26.7876 4.99262L22.0146 0.21965C21.7217 -0.0732435 21.2468 -0.0732435 20.9539 0.21965C20.6611 0.512543 20.6611 0.987417 20.9539 1.28031L25.1966 5.52295L20.9539 9.76559C20.6611 10.0585 20.6611 10.5334 20.9539 10.8263C21.2468 11.1191 21.7217 11.1191 22.0146 10.8263L26.7876 6.05328ZM0.75 6.27295L26.2572 6.27295L26.2572 4.77295L0.75 4.77295L0.75 6.27295Z" fill="white"/>
           </svg>
         </a>
@@ -29,6 +30,85 @@
     </div>
   </div>
 </section>
+
+<style>
+    .banner-{{ section.id }}{
+        width: 100%;
+        background-color: {{section.settings.background_color}};
+        overflow: hidden;
+    }
+    .banner-{{ section.id }}__inner {
+        position: relative;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 67px;
+        min-height: 520px;
+        display: flex;
+        align-items: center;
+    }
+    .banner-{{ section.id }}__bg{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: auto;
+        max-width: 70%;
+        object-fit: contain;
+        object-position: top right;
+        pointer-events: none;
+        z-index: 0;
+    }
+    .banner-{{ section.id }}__content{
+        position: relative;
+        z-index: 1;
+        max-width: 600px;
+        text-align: left;
+    }
+    .banner-{{ section.id }}__heading{
+        font-family:'Jost', sans-serif;
+        font-weight:500;
+        font-size:70px;
+        margin: 0 0 24px;
+        color: #000000;
+    }
+    .banner-{{ section.id }}__subheading{
+        font-family:'Jost', sans-serif;
+        font-weight:400;
+        font-size:20px;
+        margin: 0 0 32px;
+        line-height:1.5;
+        color: #000000;  
+    }
+    .banner-{{ section.id }}__subheading p{
+        margin: 0;
+    }    
+    .banner-{{ section.id }}__button{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        font-size: 16px;
+        line-height: 20.48px;
+        color: #FFFFFF;
+        font-family: 'jost', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        height: 50px;
+        width: 220px;
+        background-color: #000;
+        text-decoration: none;
+        transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .banner-{{ section.id }}__button-arrow{
+        transition: transform 0.25s ease;
+    }
+    .banner-{{ section.id }}__button:hover,
+    .banner-{{ section.id }}__button:focus-visible{
+        background-color: #FFF544;
+        color: #000000;
+    }
+</style>
 
 {% schema %}
 {
