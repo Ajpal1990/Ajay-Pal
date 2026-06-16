@@ -93,21 +93,27 @@
         font-family: 'jost', sans-serif;
         font-weight: 400;
         letter-spacing: 0;
+        position: relative;
         text-transform: uppercase;
         height: 50px;
         width: 220px;
         background-color: #000;
+        overflow: hidden;
         text-decoration: none;
         transition: background-color 0.25s ease, color 0.25s ease;
     }
     .banner-{{ section.id }}__button-arrow{
         transition: transform 0.25s ease;
     }
-    .banner-{{ section.id }}__button:hover,
+    .banner-{{ section.id }}__button::after{
+        content: "";
+    }
+
+    {% comment %} .banner-{{ section.id }}__button:hover,
     .banner-{{ section.id }}__button:focus-visible{
         background-color: #FFF544;
         color: #000000;
-    }
+    } {% endcomment %}
 </style>
 
 {% schema %}
