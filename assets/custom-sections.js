@@ -272,11 +272,16 @@
             });
     };
 
-    document.addEventListener('DOMContentLoaded', function () {
-        qsa(document, '[data-section-id]').forEach(function (section) {
+    function initAll() {
+        qsa(document, '[data-section.id]').forEach(function (section) {
             if (qs(section, '[data-product-popup]')) {
                 new ProductGrid(section);
             }
         });
-    });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAll);
+    } else {
+        initAll();
+    }
 })();

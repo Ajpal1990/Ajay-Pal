@@ -1,18 +1,20 @@
 <section class="banner-{{ section.id }}" data-section-id="{{ section.id }}">
-  <div class="banner-{{ section.id }}__inner">
-    {% if section.settings.background_image %}
-      <img
-        class="banner-{{ section.id }}__bg"
-        src="{{ section.settings.background_image | image_url: width: 1920 }}"
-        srcset="{{ section.settings.background_image | image_url: width: 960 }} 960w,
-                {{ section.settings.background_image | image_url: width: 1920 }} 1920w"
-        alt=""
-        loading="lazy"
-        width="{{ section.settings.background_image.width }}"
-        height="{{ section.settings.background_image.height }}"
-      >
-    {% endif %}
+  {% if section.settings.background_image %}
+    <img
+      class="banner-{{ section.id }}__bg"
+      src="{{ section.settings.background_image | image_url: width: 1920 }}"
+      srcset="
+        {{ section.settings.background_image | image_url: width: 960 }} 960w,
+        {{ section.settings.background_image | image_url: width: 1920 }} 1920w
+      "
+      alt=""
+      loading="lazy"
+      width="{{ section.settings.background_image.width }}"
+      height="{{ section.settings.background_image.height }}"
+    >
+  {% endif %}
 
+  <div class="banner-{{ section.id }}__inner">
     <div class="banner-{{ section.id }}__content">
       {% if section.settings.heading != blank %}
         <h2 class="banner-{{ section.id }}__heading">{{ section.settings.heading }}</h2>
@@ -28,7 +30,14 @@
           class="banner-{{ section.id }}__button"
         >
           <span>{{ section.settings.button_label }}</span>
-          <svg class="banner-{{ section.id }}__button-arrow" width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+          <svg
+            class="banner-{{ section.id }}__button-arrow"
+            width="20"
+            height="12"
+            viewBox="0 0 20 12"
+            fill="none"
+            aria-hidden="true"
+          >
             <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
@@ -40,12 +49,14 @@
 {% style %}
   .banner-{{ section.id }} {
     width: 100%;
+    position:relative;
     background-color: {{ section.settings.background_color }};
     overflow: hidden;
   }
 
   .banner-{{ section.id }}__inner {
     position: relative;
+    z-index:1;
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 67px 50px;
@@ -69,8 +80,6 @@
   }
 
   .banner-{{ section.id }}__content {
-    position: relative;
-    z-index: 1;
     max-width: 600px;
     text-align: left;
   }
@@ -141,6 +150,7 @@
   .banner-{{ section.id }}__button:hover,
   .banner-{{ section.id }}__button:focus-visible {
     color: #000000;
+    background-color: #FFF544;
   }
 
   .banner-{{ section.id }}__button:hover::before,
@@ -179,7 +189,7 @@
     }
 
     .banner-{{ section.id }}__button {
-      width: 100%;
+      width: 193px;
       margin: 0 auto;
     }
   }
