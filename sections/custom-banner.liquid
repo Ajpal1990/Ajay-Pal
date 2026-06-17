@@ -7,6 +7,9 @@
         srcset="{{ section.settings.background_image | image_url: width: 960 }} 960w,
                 {{ section.settings.background_image | image_url: width: 1920 }} 1920w"
         loading="lazy"
+        alt=""
+        width="{{ section.settings.background_image.width }}"
+        height="{{ section.settings.background_image.height }}"
       >
     {% endif %}
     <div class="banner-{{ section.id }}__content">
