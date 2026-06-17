@@ -1,0 +1,64 @@
+<div class="marquee-{{ section.id }}" data-section-id="{{ section.id }}">
+  {% if section.settings.text != blank %}
+    <p class="marquee-{{ section.id }}__text">{{ section.settings.text }}</p>
+  {% endif %}
+</div>
+
+{% style %}
+  .marquee-{{ section.id }} {
+    width: 100%;
+    background-color: {{ section.settings.background_color }};
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    overflow: hidden;
+  }
+
+  .marquee-{{ section.id }}__text {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0;
+    color: #000000;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 749px) {
+    .marquee-{{ section.id }}__text {
+      white-space: normal;
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Custom Text Strip",
+  "tag": "section",
+  "class": "section-custom-marquee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Strip text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F5F5F5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Text Strip"
+    }
+  ]
+}
+{% endschema %}

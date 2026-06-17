@@ -1,126 +1,234 @@
-<section
-  class="product-grid-{{ section.id }}"
-  data-section-id="{{section.id}}"
-  data-bonus-product-handle="{{ section.settings.bonus_product.handle }}"
->
-  {% if section.settings.heading != blank %}
-    <h2 class="product-grid-{{ section.id }}__heading">{{ section.settings.heading }}</h2>
-  {% endif %}
+<section class="banner-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="banner-{{ section.id }}__inner">
+    {% if section.settings.background_image %}
+      <img
+        class="banner-{{ section.id }}__bg"
+        src="{{ section.settings.background_image | image_url: width: 1920 }}"
+        srcset="{{ section.settings.background_image | image_url: width: 960 }} 960w,
+                {{ section.settings.background_image | image_url: width: 1920 }} 1920w"
+        alt=""
+        loading="lazy"
+        width="{{ section.settings.background_image.width }}"
+        height="{{ section.settings.background_image.height }}"
+      >
+    {% endif %}
 
-  <div class="product-grid-{{ section.id }}__grid">
-    {% for block in section.blocks %}
-      {% liquid
-        assign product = block.settings.product
-      %}
-      <div class="product-grid-{{ section.id }}__item" {{ block.shopify_attributes }}>
-        {% if product != blank %}
-          <img
-            class="product-grid-{{ section.id }}__image"
-            src="{{ product.featured_image | image_url: width: 800 }}"
-            srcset="
-              {{ product.featured_image | image_url: width: 400 }} 400w,
-              {{ product.featured_image | image_url: width: 400 }} 400w
-            "
-            alt="{{ product.featured_image.alt | default: product.title | escape }}"
-            loading="lazy"
-            width="{{ product.featured_image.width }}"
-            height="{{ product.featured_image.height }}"
-          >
-          <button
-            type="button"
-            class="product-grid-{{ section.id }}_hotspot"
-            data-product-hotspot
-            data-product-handle="{{ product.handle }}"
-            aria-label="quick view {{ product.title | escape }}"
-          >
-            <span aria-hidden="true">+</span>
-          </button>
-        {% else %}
-          <div class="product-grid-{{ section.id }}__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
-        {% endif %}
-      </div>
-    {% endfor %}
-  </div>
+    <div class="banner-{{ section.id }}__content">
+      {% if section.settings.heading != blank %}
+        <h2 class="banner-{{ section.id }}__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
 
-  <div class="product-popup-{{ section.id }}" data-product-popup hidden>
-    <div class="product-popup-{{ section.id }}__overlay" data-popup-close></div>
-    <div class="product-popup-{{ section.id }}__dialog" aria-modal="true" aria-label="product details">
-      <button type="button" class="product_popup-{{ section.id }}__close" data-popup-close aria-label="close">
-        &times;
-      </button>
-      <div class="product-popup-{{ section.id }}__media">
-        <img data-popup-image src="" alt="">
-      </div>
-      <div class="product-popup-{{ section.id }}__info">
-        <h3 class="product-popup-{{ section.id }}__title" data-popup-title></h3>
-        <p class="product-popup-{{ section.id }}__price" data-popup-price></p>
-        <p class="product-popup-{{ section.id }}__description" data-popup-description></p>
+      {% if section.settings.subheading != blank %}
+        <div class="banner-{{ section.id }}__subheading">{{ section.settings.subheading }}</div>
+      {% endif %}
 
-        <div class="product-popup-{{ section.id }}__options" data-popup-options></div>
-        <button type="button" class="product-popup-{{ section.id }}_add-to-cart" data-popup-add-to-cart>
-          <span data-add-to-cart-label>Add to cart</span>
-          <svg
-            class="banner-{{ section.id }}__button-arrow"
-            xmlns="http://www.w3.org/2000/svg"
-            width="27"
-            height="12"
-            viewBox="0 0 27 12"
-            fill="none"
-          >
-            <path d="M0.75 4.77295L7.83954e-08 4.77295L-7.83954e-08 6.27295L0.75 6.27295L0.75 4.77295ZM26.7876 6.05328C27.0805 5.76039 27.0805 5.28551 26.7876 4.99262L22.0146 0.21965C21.7217 -0.0732435 21.2468 -0.0732435 20.9539 0.21965C20.6611 0.512543 20.6611 0.987417 20.9539 1.28031L25.1966 5.52295L20.9539 9.76559C20.6611 10.0585 20.6611 10.5334 20.9539 10.8263C21.2468 11.1191 21.7217 11.1191 22.0146 10.8263L26.7876 6.05328ZM0.75 6.27295L26.2572 6.27295L26.2572 4.77295L0.75 4.77295L0.75 6.27295Z" fill="white"/>
+      {% if section.settings.button_label != blank %}
+        <a
+          href="{{ section.settings.button_link | default: '#' }}"
+          class="banner-{{ section.id }}__button"
+        >
+          <span>{{ section.settings.button_label }}</span>
+          <svg class="banner-{{ section.id }}__button-arrow" width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-        </button>
-      </div>
+        </a>
+      {% endif %}
     </div>
   </div>
 </section>
 
-<script src="{{ 'custom-section.js' | asset_url defer}}"></script>
+{% style %}
+  .banner-{{ section.id }} {
+    width: 100%;
+    background-color: {{ section.settings.background_color }};
+    overflow: hidden;
+  }
+
+  .banner-{{ section.id }}__inner {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 67px 50px;
+    min-height: 780px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  .banner-{{ section.id }}__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .banner-{{ section.id }}__content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    text-align: left;
+  }
+
+  .banner-{{ section.id }}__heading {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 70px;
+    line-height: 1;
+    margin: 0 0 24px;
+    color: #000000;
+  }
+
+  .banner-{{ section.id }}__subheading {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #000000;
+    margin: 0 0 32px;
+  }
+
+  .banner-{{ section.id }}__subheading p {
+    margin: 0;
+  }
+
+  .banner-{{ section.id }}__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 220px;
+    height: 50px;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #000000;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+  }
+
+  .banner-{{ section.id }}__button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #ffffff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 0;
+  }
+
+  .banner-{{ section.id }}__button span,
+  .banner-{{ section.id }}__button-arrow {
+    position: relative;
+    z-index: 1;
+  }
+
+  .banner-{{ section.id }}__button-arrow {
+    transition: transform 0.25s ease;
+  }
+
+  .banner-{{ section.id }}__button:hover,
+  .banner-{{ section.id }}__button:focus-visible {
+    color: #000000;
+  }
+
+  .banner-{{ section.id }}__button:hover::before,
+  .banner-{{ section.id }}__button:focus-visible::before {
+    transform: translateX(0);
+  }
+
+  .banner-{{ section.id }}__button:hover .banner-{{ section.id }}__button-arrow,
+  .banner-{{ section.id }}__button:focus-visible .banner-{{ section.id }}__button-arrow {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 749px) {
+    .banner-{{ section.id }}__inner {
+      padding: 0 24px 40px;
+      min-height: 560px;
+    }
+
+    .banner-{{ section.id }}__bg {
+      object-position: center top;
+    }
+
+    .banner-{{ section.id }}__content {
+      max-width: 100%;
+      text-align: center;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .banner-{{ section.id }}__heading {
+      font-size: 30px;
+    }
+
+    .banner-{{ section.id }}__subheading {
+      font-size: 16px;
+    }
+
+    .banner-{{ section.id }}__button {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+{% endstyle %}
 
 {% schema %}
 {
-  "name": "Custom Product Grid",
+  "name": "Custom Banner",
   "tag": "section",
-  "class": "section-custom-product-grid",
+  "class": "section-custom-banner",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background illustration"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Tisso vison in the wild"
+      "default": "The Gift Guide"
     },
     {
-      "type": "product",
-      "id": "bonus_product",
-      "label": "Auto-add product",
-      "default": "Automatically added to cart when a customer adds any product  with the black + medium variant combination"
-    }
-  ],
-  "blocks": [
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>"
+    },
     {
-      "type": "product_block",
-      "name": "product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
-        }
-      ]
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
     }
   ],
-  "max_blocks": 6,
   "presets": [
     {
-      "name": "Custom Product Grid",
-      "blocks": [
-        { "type": "product_block" },
-        { "type": "product_block" },
-        { "type": "product_block" },
-        { "type": "product_block" },
-        { "type": "product_block" },
-        { "type": "product_block" }
-      ]
+      "name": "Custom Banner"
     }
   ]
 }
