@@ -21,6 +21,14 @@
         "button_link": ""
       }
     },
+    "custom_marquee_CPPHTR": {
+      "type": "custom-marquee",
+      "name": "Custom Text Strip",
+      "settings": {
+        "text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL",
+        "background_color": "#F5F5F5"
+      }
+    },
     "custom_products_grid_B98Qd6": {
       "type": "custom-products-grid",
       "blocks": {
@@ -145,6 +153,7 @@
   },
   "order": [
     "custom_banner_9QgFKE",
+    "custom_marquee_CPPHTR",
     "custom_products_grid_B98Qd6",
     "image_banner",
     "featured_collection"
