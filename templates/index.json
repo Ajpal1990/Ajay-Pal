@@ -21,6 +21,60 @@
         "button_link": ""
       }
     },
+    "custom_products_grid_B98Qd6": {
+      "type": "custom-products-grid",
+      "blocks": {
+        "product_block_Lhy6jt": {
+          "type": "product_block",
+          "settings": {
+            "product": "black-leather-bag"
+          }
+        },
+        "product_block_MzGeKD": {
+          "type": "product_block",
+          "settings": {
+            "product": "blue-silk-tuxedo"
+          }
+        },
+        "product_block_hx64hV": {
+          "type": "product_block",
+          "settings": {
+            "product": "chequered-red-shirt"
+          }
+        },
+        "product_block_erimFN": {
+          "type": "product_block",
+          "settings": {
+            "product": "classic-leather-jacket"
+          }
+        },
+        "product_block_8H7nLX": {
+          "type": "product_block",
+          "settings": {
+            "product": "classic-varsity-top"
+          }
+        },
+        "product_block_Md9fzq": {
+          "type": "product_block",
+          "settings": {
+            "product": "dark-denim-top"
+          }
+        }
+      },
+      "block_order": [
+        "product_block_Lhy6jt",
+        "product_block_MzGeKD",
+        "product_block_hx64hV",
+        "product_block_erimFN",
+        "product_block_8H7nLX",
+        "product_block_Md9fzq"
+      ],
+      "name": "Custom Product Grid",
+      "settings": {
+        "heading": "Tisso vison in the wild",
+        "bonus_product": ""
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -91,6 +145,7 @@
   },
   "order": [
     "custom_banner_9QgFKE",
+    "custom_products_grid_B98Qd6",
     "image_banner",
     "featured_collection"
   ]
