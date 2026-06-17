@@ -9,6 +9,17 @@
  */
 {
   "sections": {
+    "custom_header_BmYwBC": {
+      "type": "custom-header",
+      "name": "Custom Header",
+      "settings": {
+        "logo_text": "TISSO VISON",
+        "tagline": "Find the ideal gift for your loved ones.",
+        "button_label": "CHOOSE GIFT",
+        "button_link": "#",
+        "button_color": "#FFD700"
+      }
+    },
     "custom_banner_9QgFKE": {
       "type": "custom-banner",
       "name": "Custom Banner",
@@ -109,6 +120,7 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
@@ -124,6 +136,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "collection": "all",
         "products_to_show": 8,
@@ -152,6 +165,7 @@
     }
   },
   "order": [
+    "custom_header_BmYwBC",
     "custom_banner_9QgFKE",
     "custom_marquee_CPPHTR",
     "custom_products_grid_B98Qd6",
