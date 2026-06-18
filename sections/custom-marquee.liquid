@@ -4,7 +4,9 @@
   {% endif %}
 
   {% if section.settings.text_mobile != blank %}
-    <p class="marquee-{{ section.id }}__text marquee-{{ section.id }}__text--mobile">{{ section.settings.text_mobile }}</p>
+    <p class="marquee-{{ section.id }}__text marquee-{{ section.id }}__text--mobile">
+      {{ section.settings.text_mobile }}
+    </p>
   {% endif %}
 </div>
 
@@ -22,7 +24,6 @@
   }
 
   .marquee-{{ section.id }}__text {
-    font-family: 'Jost', sans-serif;
     font-weight: 400;
     font-size: 16px;
     letter-spacing: 0;
