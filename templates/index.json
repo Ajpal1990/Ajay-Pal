@@ -17,7 +17,7 @@
         "tagline": "Find the ideal gift for your loved ones.",
         "button_label": "CHOOSE GIFT",
         "button_link": "#",
-        "button_color": "#FFD700"
+        "button_color": "#ffd700"
       }
     },
     "custom_banner_9QgFKE": {
@@ -28,6 +28,8 @@
         "background_color": "#ffffff",
         "heading": "The Gift Guide",
         "subheading": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>",
+        "subheading_mobile": "<p>Discover Joy: Your Ultimate Holiday Gift Destination.</p>",
+        "content_background_color": "#ffffff",
         "button_label": "Shop Now",
         "button_link": ""
       }
@@ -37,7 +39,8 @@
       "name": "Custom Text Strip",
       "settings": {
         "text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL",
-        "background_color": "#F5F5F5"
+        "text_mobile": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR",
+        "background_color": "#f5f5f5"
       }
     },
     "custom_products_grid_B98Qd6": {
@@ -46,37 +49,61 @@
         "product_block_Lhy6jt": {
           "type": "product_block",
           "settings": {
-            "product": "black-leather-bag"
+            "product": "black-leather-bag",
+            "hotspot_top_desktop": 60,
+            "hotspot_left_desktop": 58,
+            "hotspot_top_mobile": 20,
+            "hotspot_left_mobile": 54
           }
         },
         "product_block_MzGeKD": {
           "type": "product_block",
           "settings": {
-            "product": "blue-silk-tuxedo"
+            "product": "blue-silk-tuxedo",
+            "hotspot_top_desktop": 58,
+            "hotspot_left_desktop": 80,
+            "hotspot_top_mobile": 58,
+            "hotspot_left_mobile": 80
           }
         },
         "product_block_hx64hV": {
           "type": "product_block",
           "settings": {
-            "product": "chequered-red-shirt"
+            "product": "chequered-red-shirt",
+            "hotspot_top_desktop": 24,
+            "hotspot_left_desktop": 60,
+            "hotspot_top_mobile": 24,
+            "hotspot_left_mobile": 60
           }
         },
         "product_block_erimFN": {
           "type": "product_block",
           "settings": {
-            "product": "classic-leather-jacket"
+            "product": "classic-leather-jacket",
+            "hotspot_top_desktop": 17,
+            "hotspot_left_desktop": 76,
+            "hotspot_top_mobile": 17,
+            "hotspot_left_mobile": 76
           }
         },
         "product_block_8H7nLX": {
           "type": "product_block",
           "settings": {
-            "product": "classic-varsity-top"
+            "product": "classic-varsity-top",
+            "hotspot_top_desktop": 44,
+            "hotspot_left_desktop": 19,
+            "hotspot_top_mobile": 44,
+            "hotspot_left_mobile": 19
           }
         },
         "product_block_Md9fzq": {
           "type": "product_block",
           "settings": {
-            "product": "dark-denim-top"
+            "product": "dark-denim-top",
+            "hotspot_top_desktop": 46,
+            "hotspot_left_desktop": 75,
+            "hotspot_top_mobile": 46,
+            "hotspot_left_mobile": 75
           }
         }
       },
