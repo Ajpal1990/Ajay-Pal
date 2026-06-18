@@ -21,32 +21,65 @@
       {% endif %}
 
       {% if section.settings.subheading != blank %}
-        <div class="banner-{{ section.id }}__subheading banner-{{ section.id }}__subheading--desktop">{{ section.settings.subheading }}</div>
+        <div class="banner-{{ section.id }}__subheading banner-{{ section.id }}__subheading--desktop">
+          {{ section.settings.subheading }}
+        </div>
       {% endif %}
 
       {% if section.settings.subheading_mobile != blank %}
-        <div class="banner-{{ section.id }}__subheading banner-{{ section.id }}__subheading--mobile">{{ section.settings.subheading_mobile }}</div>
+        <div class="banner-{{ section.id }}__subheading banner-{{ section.id }}__subheading--mobile">
+          {{ section.settings.subheading_mobile }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <a
+          href="{{ section.settings.button_link | default: '#' }}"
+          class="banner-{{ section.id }}__button-desktop"
+        >
+          <span>{{ section.settings.button_label }}</span>
+          <svg
+            class="banner-{{ section.id }}__button-arrow"
+            width="20"
+            height="12"
+            viewBox="0 0 20 12"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       {% endif %}
     </div>
 
     {% if section.settings.button_label != blank %}
-      <a
-        href="{{ section.settings.button_link | default: '#' }}"
-        class="banner-{{ section.id }}__button"
-      >
-        <span>{{ section.settings.button_label }}</span>
-        <svg
-          class="banner-{{ section.id }}__button-arrow"
-          width="20"
-          height="12"
-          viewBox="0 0 20 12"
-          fill="none"
-          aria-hidden="true"
+        <a
+          href="{{ section.settings.button_link | default: '#' }}"
+          class="banner-{{ section.id }}__button"
         >
-          <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    {% endif %}
+          <span>{{ section.settings.button_label }}</span>
+          <svg
+            class="banner-{{ section.id }}__button-arrow"
+            width="20"
+            height="12"
+            viewBox="0 0 20 12"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg
+            class="banner-{{ section.id }}__button-arrow"
+            xmlns="http://www.w3.org/2000/svg"
+            width="27"
+            height="12"
+            viewBox="0 0 27 12"
+            fill="none"
+          >
+            <path d="M0.75 4.77295L7.83954e-08 4.77295L-7.83954e-08 6.27295L0.75 6.27295L0.75 4.77295ZM26.7876 6.05328C27.0805 5.76039 27.0805 5.28551 26.7876 4.99262L22.0146 0.21965C21.7217 -0.0732435 21.2468 -0.0732435 20.9539 0.21965C20.6611 0.512543 20.6611 0.987417 20.9539 1.28031L25.1966 5.52295L20.9539 9.76559C20.6611 10.0585 20.6611 10.5334 20.9539 10.8263C21.2468 11.1191 21.7217 11.1191 22.0146 10.8263L26.7876 6.05328ZM0.75 6.27295L26.2572 6.27295L26.2572 4.77295L0.75 4.77295L0.75 6.27295Z" fill="none"/>
+          </svg>
+        </a>
+      {% endif %}
   </div>
 </section>
 
@@ -63,7 +96,6 @@
     z-index: 1;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 67px 50px;
     min-height: 780px;
     display: flex;
     flex-direction: column;
@@ -88,7 +120,7 @@
     text-align: left;
     background-color: {{ section.settings.content_background_color }};
     {% if section.settings.content_background_color != 'rgba(0,0,0,0)' %}
-      padding: 32px;
+      padding: 51px 67px;
     {% endif %}
   }
 
@@ -96,14 +128,14 @@
     display: none;
   }
 
+
   .banner-{{ section.id }}__heading {
     font-family: 'Jost', sans-serif;
     font-weight: 500;
     font-size: 70px;
     line-height: 1;
-    margin: 0 0 24px;
+    margin: 0 0 50px;
     color: #000000;
-    text-align:center;
   }
 
   .banner-{{ section.id }}__subheading {
@@ -120,7 +152,7 @@
   }
 
   .banner-{{ section.id }}__button {
-    display: inline-flex;
+    display:none !important;
     align-items: center;
     justify-content: center;
     gap: 12px;
@@ -140,7 +172,27 @@
     transition: color 0.3s ease;
   }
 
-  .banner-{{ section.id }}__button::before {
+    .banner-{{ section.id }}__button-desktop {
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 220px;
+    height: 50px;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0px 2px 4px 0px #00000033;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+  }
+
+  .banner-{{ section.id }}__button::before , .banner-{{ section.id }}__button-desktop::before{
     content: '';
     position: absolute;
     inset: 0;
@@ -160,25 +212,27 @@
     transition: transform 0.25s ease;
   }
 
-  .banner-{{ section.id }}__button:hover,
-  .banner-{{ section.id }}__button:focus-visible {
+  .banner-{{ section.id }}__button:hover,.banner-{{ section.id }}__button-desktop:hover,
+  .banner-{{ section.id }}__button:focus-visible, .banner-{{ section.id }}__button-desktop:focus-visible {
     color: #000000;
   }
 
-  .banner-{{ section.id }}__button:hover::before,
-  .banner-{{ section.id }}__button:focus-visible::before {
+  .banner-{{ section.id }}__button:hover::before, .banner-{{ section.id }}__button-desktop:hover::before,
+  .banner-{{ section.id }}__button:focus-visible::before, .banner-{{ section.id }}__button-desktop:focus-visible::before {
     transform: translateX(0);
   }
 
-  .banner-{{ section.id }}__button:hover .banner-{{ section.id }}__button-arrow,
-  .banner-{{ section.id }}__button:focus-visible .banner-{{ section.id }}__button-arrow {
+  .banner-{{ section.id }}__button:hover .banner-{{ section.id }}__button-arrow, .banner-{{ section.id }}__button-desktop:hover .banner-{{ section.id }}__button-arrow,
+  .banner-{{ section.id }}__button:focus-visible .banner-{{ section.id }}__button-arrow , .banner-{{ section.id }}__button-desktop:focus-visible .banner-{{ section.id }}__button-arrow{
     transform: translateX(4px);
   }
 
   @media (max-width: 749px) {
+    .banner-{{ section.id }}__button-desktop{
+        display:none;
+    }
     .banner-{{ section.id }}__inner {
-      padding: 48px 24px 40px;
-      min-height: 560px;
+      min-height: 421px;
       justify-content: space-between;
     }
 
@@ -191,14 +245,17 @@
       text-align: center;
       margin: 0;
       width: 100%;
+        padding: 49px 18.22px 12px 16.78px;
     }
 
     .banner-{{ section.id }}__heading {
       font-size: 30px;
+      margin-bottom:24px;
     }
 
     .banner-{{ section.id }}__subheading {
       font-size: 16px;
+      margin:0;
     }
 
     {% if section.settings.subheading_mobile != blank %}
@@ -211,9 +268,9 @@
       }
     {% endif %}
 
-    .banner-{{ section.id }}__button {
+    .banner-{{ section.id }}__button, .banner-{{ section.id }}__button-desktop {
       width: 193px;
-      margin: 0 auto;
+      margin: 0 auto 39px;
     }
   }
 {% endstyle %}
