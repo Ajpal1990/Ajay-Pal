@@ -1,6 +1,10 @@
 <div class="marquee-{{ section.id }}" data-section-id="{{ section.id }}">
   {% if section.settings.text != blank %}
-    <p class="marquee-{{ section.id }}__text">{{ section.settings.text }}</p>
+    <p class="marquee-{{ section.id }}__text marquee-{{ section.id }}__text--desktop">{{ section.settings.text }}</p>
+  {% endif %}
+
+  {% if section.settings.text_mobile != blank %}
+    <p class="marquee-{{ section.id }}__text marquee-{{ section.id }}__text--mobile">{{ section.settings.text_mobile }}</p>
   {% endif %}
 </div>
 
@@ -28,11 +32,25 @@
     white-space: nowrap;
   }
 
+  .marquee-{{ section.id }}__text--mobile {
+    display: none;
+  }
+
   @media (max-width: 749px) {
     .marquee-{{ section.id }}__text {
       white-space: normal;
       font-size: 14px;
     }
+
+    {% if section.settings.text_mobile != blank %}
+      .marquee-{{ section.id }}__text--desktop {
+        display: none;
+      }
+
+      .marquee-{{ section.id }}__text--mobile {
+        display: block;
+      }
+    {% endif %}
   }
 {% endstyle %}
 
@@ -45,8 +63,14 @@
     {
       "type": "text",
       "id": "text",
-      "label": "Strip text",
+      "label": "Strip text (desktop)",
       "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
+    {
+      "type": "text",
+      "id": "text_mobile",
+      "label": "Strip text (mobile)",
+      "info": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
     },
     {
       "type": "color",

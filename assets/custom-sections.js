@@ -148,6 +148,7 @@
             button.className = prefix + 'swatch';
             button.textContent = value;
             button.setAttribute('aria-pressed', String(self.selectedOptions[optionIndex] === value));
+            button.style.setProperty('--swatch-color', value.toLowerCase());
 
             button.addEventListener('click', function () {
                 self.selectedOptions[optionIndex] = value;
@@ -273,7 +274,7 @@
     };
 
     function initAll() {
-        qsa(document, '[data-section.id]').forEach(function (section) {
+        qsa(document, '[data-section-id]').forEach(function (section) {
             if (qs(section, '[data-product-popup]')) {
                 new ProductGrid(section);
             }

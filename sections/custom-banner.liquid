@@ -21,28 +21,32 @@
       {% endif %}
 
       {% if section.settings.subheading != blank %}
-        <div class="banner-{{ section.id }}__subheading">{{ section.settings.subheading }}</div>
+        <div class="banner-{{ section.id }}__subheading banner-{{ section.id }}__subheading--desktop">{{ section.settings.subheading }}</div>
       {% endif %}
 
-      {% if section.settings.button_label != blank %}
-        <a
-          href="{{ section.settings.button_link | default: '#' }}"
-          class="banner-{{ section.id }}__button"
-        >
-          <span>{{ section.settings.button_label }}</span>
-          <svg
-            class="banner-{{ section.id }}__button-arrow"
-            width="20"
-            height="12"
-            viewBox="0 0 20 12"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+      {% if section.settings.subheading_mobile != blank %}
+        <div class="banner-{{ section.id }}__subheading banner-{{ section.id }}__subheading--mobile">{{ section.settings.subheading_mobile }}</div>
       {% endif %}
     </div>
+
+    {% if section.settings.button_label != blank %}
+      <a
+        href="{{ section.settings.button_link | default: '#' }}"
+        class="banner-{{ section.id }}__button"
+      >
+        <span>{{ section.settings.button_label }}</span>
+        <svg
+          class="banner-{{ section.id }}__button-arrow"
+          width="20"
+          height="12"
+          viewBox="0 0 20 12"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    {% endif %}
   </div>
 </section>
 
@@ -56,7 +60,7 @@
 
   .banner-{{ section.id }}__inner {
     position: relative;
-    z-index:1;
+    z-index: 1;
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 67px 50px;
@@ -82,6 +86,14 @@
   .banner-{{ section.id }}__content {
     max-width: 600px;
     text-align: left;
+    background-color: {{ section.settings.content_background_color }};
+    {% if section.settings.content_background_color != 'rgba(0,0,0,0)' %}
+      padding: 32px;
+    {% endif %}
+  }
+
+  .banner-{{ section.id }}__subheading--mobile {
+    display: none;
   }
 
   .banner-{{ section.id }}__heading {
@@ -91,6 +103,7 @@
     line-height: 1;
     margin: 0 0 24px;
     color: #000000;
+    text-align:center;
   }
 
   .banner-{{ section.id }}__subheading {
@@ -121,7 +134,7 @@
     letter-spacing: 0.05em;
     text-decoration: none;
     text-transform: uppercase;
-    border: 1px solid #000000;
+    box-shadow: 0px 2px 4px 0px #00000033;
     position: relative;
     overflow: hidden;
     transition: color 0.3s ease;
@@ -131,7 +144,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-color: #ffffff;
+    background-color: #FFF544;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 0;
@@ -150,7 +163,6 @@
   .banner-{{ section.id }}__button:hover,
   .banner-{{ section.id }}__button:focus-visible {
     color: #000000;
-    background-color: #FFF544;
   }
 
   .banner-{{ section.id }}__button:hover::before,
@@ -165,8 +177,9 @@
 
   @media (max-width: 749px) {
     .banner-{{ section.id }}__inner {
-      padding: 0 24px 40px;
+      padding: 48px 24px 40px;
       min-height: 560px;
+      justify-content: space-between;
     }
 
     .banner-{{ section.id }}__bg {
@@ -176,7 +189,7 @@
     .banner-{{ section.id }}__content {
       max-width: 100%;
       text-align: center;
-      margin: 0 auto;
+      margin: 0;
       width: 100%;
     }
 
@@ -187,6 +200,16 @@
     .banner-{{ section.id }}__subheading {
       font-size: 16px;
     }
+
+    {% if section.settings.subheading_mobile != blank %}
+      .banner-{{ section.id }}__subheading--desktop {
+        display: none;
+      }
+
+      .banner-{{ section.id }}__subheading--mobile {
+        display: block;
+      }
+    {% endif %}
 
     .banner-{{ section.id }}__button {
       width: 193px;
@@ -221,8 +244,20 @@
     {
       "type": "richtext",
       "id": "subheading",
-      "label": "Subheading",
+      "label": "Subheading (desktop)",
       "default": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading_mobile",
+      "label": "Subheading (mobile)",
+      "info": "Discover Joy: Your Ultimate Holiday Gift Destination."
+    },
+    {
+      "type": "color",
+      "id": "content_background_color",
+      "label": "Content background color",
+      "default": "#ffffff"
     },
     {
       "type": "text",
