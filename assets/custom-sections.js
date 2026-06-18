@@ -115,14 +115,14 @@
 
         this.optionsEl.innerHTML = '';
 
-        var firstOption = product.option[0];
-        var firstName = (typeof firstOption === 'string')? firstOption : firstOption.name;
+        var firstOption = product.options[0];
+        var firstName = (typeof firstOption === 'string') ? firstOption : firstOption.name;
         var hasRealOptions = !(product.options.length === 1 && firstName.toLowerCase() === 'title');
         if (!hasRealOptions) return;
 
         product.options.forEach(function (option, optionIndex) {
-            var optionName = (typeof option === 'string')? option : option.name;
-            
+            var optionName = (typeof option === 'string') ? option : option.name;
+
             var group = document.createElement('div');
             group.className = prefix + 'option-group';
 
