@@ -53,33 +53,23 @@
     </div>
 
     {% if section.settings.button_label != blank %}
-        <a
-          href="{{ section.settings.button_link | default: '#' }}"
-          class="banner-{{ section.id }}__button"
+      <a
+        href="{{ section.settings.button_link | default: '#' }}"
+        class="banner-{{ section.id }}__button"
+      >
+        <span>{{ section.settings.button_label }}</span>
+        <svg
+          class="banner-{{ section.id }}__button-arrow"
+          width="20"
+          height="12"
+          viewBox="0 0 20 12"
+          fill="none"
+          aria-hidden="true"
         >
-          <span>{{ section.settings.button_label }}</span>
-          <svg
-            class="banner-{{ section.id }}__button-arrow"
-            width="20"
-            height="12"
-            viewBox="0 0 20 12"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <svg
-            class="banner-{{ section.id }}__button-arrow"
-            xmlns="http://www.w3.org/2000/svg"
-            width="27"
-            height="12"
-            viewBox="0 0 27 12"
-            fill="none"
-          >
-            <path d="M0.75 4.77295L7.83954e-08 4.77295L-7.83954e-08 6.27295L0.75 6.27295L0.75 4.77295ZM26.7876 6.05328C27.0805 5.76039 27.0805 5.28551 26.7876 4.99262L22.0146 0.21965C21.7217 -0.0732435 21.2468 -0.0732435 20.9539 0.21965C20.6611 0.512543 20.6611 0.987417 20.9539 1.28031L25.1966 5.52295L20.9539 9.76559C20.6611 10.0585 20.6611 10.5334 20.9539 10.8263C21.2468 11.1191 21.7217 11.1191 22.0146 10.8263L26.7876 6.05328ZM0.75 6.27295L26.2572 6.27295L26.2572 4.77295L0.75 4.77295L0.75 6.27295Z" fill="none"/>
-          </svg>
-        </a>
-      {% endif %}
+          <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    {% endif %}
   </div>
 </section>
 
@@ -94,7 +84,6 @@
   .banner-{{ section.id }}__inner {
     position: relative;
     z-index: 1;
-    max-width: 1440px;
     margin: 0 auto;
     min-height: 780px;
     display: flex;
@@ -130,7 +119,6 @@
 
 
   .banner-{{ section.id }}__heading {
-    font-family: 'Jost', sans-serif;
     font-weight: 500;
     font-size: 70px;
     line-height: 1;
@@ -139,7 +127,6 @@
   }
 
   .banner-{{ section.id }}__subheading {
-    font-family: 'Jost', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 1.4;
@@ -160,7 +147,6 @@
     height: 50px;
     background-color: #000000;
     color: #ffffff;
-    font-family: 'Jost', sans-serif;
     font-weight: 500;
     font-size: 14px;
     letter-spacing: 0.05em;
@@ -173,6 +159,7 @@
   }
 
     .banner-{{ section.id }}__button-desktop {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
@@ -180,7 +167,6 @@
     height: 50px;
     background-color: #000000;
     color: #ffffff;
-    font-family: 'Jost', sans-serif;
     font-weight: 500;
     font-size: 14px;
     letter-spacing: 0.05em;
@@ -202,10 +188,14 @@
     z-index: 0;
   }
 
-  .banner-{{ section.id }}__button span,
+  .banner-{{ section.id }}__button span, .banner-{{ section.id }}__button-desktop span,
   .banner-{{ section.id }}__button-arrow {
     position: relative;
     z-index: 1;
+  }
+
+  .product-popup-{{section.id}}__select option{
+    text-align:center;
   }
 
   .banner-{{ section.id }}__button-arrow {
@@ -229,7 +219,10 @@
 
   @media (max-width: 749px) {
     .banner-{{ section.id }}__button-desktop{
-        display:none;
+        display:none !important;
+    }
+    .banner-{{ section.id }}__button{
+        display:Flex !important;
     }
     .banner-{{ section.id }}__inner {
       min-height: 421px;
