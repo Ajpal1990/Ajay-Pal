@@ -59,7 +59,7 @@
       <div class="product-popup-{{ section.id }}__body">
         <div class="product-popup-{{ section.id }}__options" data-popup-options></div>
 
-        <button type="button" class="product-popup-{{ section.id }}__add-to-cart" data-popup-add-to-cart>
+        <button type="submit" name="add" class=" product-form__submit product-popup-{{ section.id }}__add-to-cart" data-popup-add-to-cart>
           <span data-add-to-cart-label>Add to cart</span>
           <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
             <path d="M1 6H19M19 6L14 1M19 6L14 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -340,6 +340,7 @@
     font-size: 16px;
     color: #000000;
     cursor: pointer;
+    text-align:center;
   }
 
   .product-popup-{{ section.id }}__add-to-cart {
